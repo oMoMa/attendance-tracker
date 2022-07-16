@@ -3,10 +3,10 @@
     <v-row no-gutters>
       <v-row justify="center" align="center">
         <v-img
-          src="https://bad.src/not/valid"
+          src="~/assets/Images/img.jpg"
           lazy-src="https://picsum.photos/id/11/100/60"
-          max-width="500"
-          max-height="500"
+          max-width="300"
+          max-height="300"
         >
         </v-img>
       </v-row>
