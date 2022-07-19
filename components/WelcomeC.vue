@@ -69,4 +69,7 @@ export default {
 p {
   font-weight: 3rem;
 }
+.v-btn.v-size--default {
+  width: 189px;
+}
 </style>
