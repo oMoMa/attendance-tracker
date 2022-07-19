@@ -1,23 +1,72 @@
 <template>
   <v-container class="grey lighten-5">
     <v-row no-gutters>
-      <v-col>
+      <v-col justify="center" align="center">
+        <h1>Name of App</h1>
         <v-img
           :src="require('assets/Images/img.jpg')"
           lazy-src="https://picsum.photos/id/11/100/60"
-          max-width="300"
-          max-height="300"
-          class="mx-auto"
+          max-width="400"
+          max-height="400"
+          class="mt-2"
         >
         </v-img>
+        <h2 class="mt-4">Welcome</h2>
+        <p class="mt-2">
+          Fast and easy way to record and track attendance of your employees.
+        </p>
+        <div class="buttons">
+          <v-row>
+            <v-col>
+              <v-btn
+                dark
+                rounded
+                color="purple"
+                class="pa-5"
+                @click="GoToLogin('Login', $event)"
+              >
+                Login
+              </v-btn>
+
+              <v-btn
+                dark
+                rounded
+                color="purple"
+                class="pa-5"
+                @click="GoToSignin('Signin', $event)"
+              >
+                Signin
+              </v-btn>
+            </v-col>
+          </v-row>
+        </div>
       </v-col>
-    </v-row>
-    <v-row justify="center" align="center">
-      <p>welcome</p>
-    </v-row>
-    <v-row justify="center" align="center">
-      <v-btn depressed color="primary"> Login </v-btn>
-      <v-btn depressed color="primary"> Signin </v-btn>
     </v-row>
   </v-container>
 </template>
+<script>
+export default {
+  methods: {
+    GoToLogin(message, event) {
+      if (event) {
+        event.preventDefault()
+      }
+      alert(message)
+    },
+    GoToSignin(message, event) {
+      if (event) {
+        event.preventDefault()
+      }
+      alert(message)
+    },
+  },
+}
+</script>
+<style>
+.buttons {
+  margin-top: 30%;
+}
+p {
+  font-weight: 3rem;
+}
+</style>
