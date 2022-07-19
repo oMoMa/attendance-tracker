@@ -25,7 +25,7 @@
                 class="pa-5"
                 @click="GoToLogin('Login', $event)"
               >
-                Login
+                Log in
               </v-btn>
 
               <v-btn
@@ -35,7 +35,7 @@
                 class="pa-5"
                 @click="GoToSignin('Signin', $event)"
               >
-                Signin
+                Sign up
               </v-btn>
             </v-col>
           </v-row>
