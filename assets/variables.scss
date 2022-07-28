@@ -2,3 +2,8 @@
 //
 // The variables you want to modify
 // $font-size-root: 20px;
+
+@use 'font-face.css';
+
+$body-font-family: Vazirmatn UI, sans-serif !default;
+$btn-letter-spacing: 0 !default;
