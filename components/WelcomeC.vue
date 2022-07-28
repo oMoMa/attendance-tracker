@@ -16,51 +16,24 @@
           Fast and easy way to record and track attendance of your employees.
         </p>
         <div class="buttons">
-          <v-row>
-            <v-col>
-              <v-btn
-                dark
-                rounded
-                color="purple"
-                class="pa-5"
-                @click="GoToLogin('Login', $event)"
-              >
-                Log in
-              </v-btn>
-
-              <v-btn
-                dark
-                rounded
-                color="purple"
-                class="pa-5"
-                @click="GoToSignin('Signin', $event)"
-              >
-                Sign up
-              </v-btn>
-            </v-col>
-          </v-row>
+          <v-btn
+            dark
+            rounded
+            color="purple"
+            class="pa-5"
+            nuxt
+            to="/login"
+            max-width="200px"
+          >
+            ورود | ثبت‌نام
+          </v-btn>
         </div>
       </v-col>
     </v-row>
   </v-container>
 </template>
 <script>
-export default {
-  methods: {
-    GoToLogin(message, event) {
-      if (event) {
-        event.preventDefault()
-      }
-      alert(message)
-    },
-    GoToSignin(message, event) {
-      if (event) {
-        event.preventDefault()
-      }
-      alert(message)
-    },
-  },
-}
+export default {}
 </script>
 <style>
 .buttons {
