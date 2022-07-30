@@ -1,6 +1,12 @@
+import fa from 'vuetify/lib/locale/fa'
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
+
+  server: {
+    host: process.env.NUXT_HOST || 'localhost', // default: localhost
+    port: process.env.NUXT_PORT || '3000', // default: 3000
+  },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -38,12 +44,45 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+
+    '@nuxtjs/auth-next',
   ],
+
+  router: {
+    middleware: ['auth'],
+  },
+
+  auth: {
+    strategies: {
+      local: {
+        token: {
+          property: 'response.accessToken',
+          global: true,
+          // required: true,
+          // type: 'Bearer'
+        },
+        user: {
+          property: 'response',
+          // autoFetch: true
+        },
+        endpoints: {
+          login: { url: '/employee/login-register', method: 'post' },
+          logout: false,
+          user: { url: '/employee/profile', method: 'get' },
+        },
+      },
+    },
+    redirect: {
+      login: '/login',
+      logout: '/login',
+      home: '/dashboard',
+    },
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
+    // baseURL: '/',
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
@@ -55,13 +94,30 @@ export default {
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
+    rtl: true,
+    treeShake: true,
     customVariables: ['~/assets/variables.scss'],
+    breakpoint: {
+      mobileBreakpoint: 'sm', // This is equivalent to a value of 960
+    },
+    lang: {
+      locales: { fa },
+      current: 'fa',
+    },
     theme: {
       themes: {
         light: {},
       },
     },
   },
+
+  // publicRuntimeConfig: {
+  //   axios: {
+  //     baseURL: `http://${process.env.API_HOST}:${process.env.API_PORT}${process.env.API_PREFIX}`,
+  //   },
+  // },
+
+  // privateRuntimeConfig: {},
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
