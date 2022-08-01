@@ -1,5 +1,7 @@
 <template>
-  <div></div>
+  <div>
+    <v-btn @click="$auth.logout()" class="mx-auto">logout</v-btn>
+  </div>
 </template>
 
 <script>

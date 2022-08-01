@@ -1,14 +1,23 @@
 <template>
-  <v-container>
-    <v-btn @click="$auth.logout()" class="mx-auto">logout</v-btn>
-    <v-btn
-      dark
-      color="purple lighten-2"
-      @click="scannerDialog = true"
-      class="mx-auto mt-4"
-    >
-      {{ checkInBtnText }}
-    </v-btn>
+  <div>
+    <v-container>
+      <v-btn
+        dark
+        color="primary"
+        class="mx-auto mt-4 rounded-circle checkin-gradient"
+        width="200px"
+        height="200px"
+        x-large
+        @click="scannerDialog = true"
+      >
+        <div class="d-flex flex-column">
+          <v-icon x-large>mdi-gesture-tap</v-icon>
+          <span>
+            {{ checkInBtnText }}
+          </span>
+        </div>
+      </v-btn>
+    </v-container>
     <v-dialog
       v-if="scannerDialog"
       v-model="scannerDialog"
@@ -43,7 +52,7 @@
       </div>
     </v-dialog>
     <v-snackbar v-model="snackbar">{{ message }}</v-snackbar>
-  </v-container>
+  </div>
 </template>
 
 <script>
@@ -114,5 +123,14 @@ export default {
   #scanner-wrapper {
     aspect-ratio: 9/16;
   }
+}
+
+.checkin-gradient {
+  background: linear-gradient(
+    45deg,
+    rgba(97, 85, 166, 1) 0%,
+    rgba(9, 9, 121, 1) 60%,
+    rgba(0, 114, 255, 1) 100%
+  );
 }
 </style>
