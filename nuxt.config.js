@@ -106,7 +106,12 @@ export default {
     },
     theme: {
       themes: {
-        light: {},
+        light: {
+          primary: '6155A6',
+          secondary: 'A685E2',
+          trietary: 'FFABE1',
+          background: 'FFE6E6',
+        },
       },
     },
   },
