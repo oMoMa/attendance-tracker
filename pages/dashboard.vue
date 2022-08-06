@@ -1,39 +1,37 @@
 <template>
-  <div>
-    <v-container>
-      <div
-        v-if="!$fetchState.pending"
-        class="d-flex flex-column justify-center align-center"
-        style="height: 100vh"
-      >
-        <div class="farsi-digits d-flex flex-column align-center">
-          <div id="clock">
-            {{ String(currentTime.getHours()).padStart(2, '0') }}:{{
-              String(currentTime.getMinutes()).padStart(2, '0')
-            }}
-          </div>
-          <div id="date" class="text-caption">
-            {{ today }}
-          </div>
+  <div style="height: 100%">
+    <div
+      v-if="!$fetchState.pending"
+      class="d-flex flex-column justify-center align-center"
+      style="height: 100%"
+    >
+      <div class="farsi-digits d-flex flex-column align-center">
+        <div id="clock">
+          {{ String(currentTime.getHours()).padStart(2, '0') }}:{{
+            String(currentTime.getMinutes()).padStart(2, '0')
+          }}
         </div>
-        <v-btn
-          dark
-          class="mt-4 rounded-circle"
-          :class="checkInStatus ? 'checkout-gradient' : 'checkin-gradient'"
-          width="200px"
-          height="200px"
-          x-large
-          @click="scannerDialog = true"
-        >
-          <div class="d-flex flex-column">
-            <v-icon x-large>mdi-gesture-tap</v-icon>
-            <span>
-              {{ checkInBtnText }}
-            </span>
-          </div>
-        </v-btn>
+        <div id="date" class="text-caption">
+          {{ today }}
+        </div>
       </div>
-    </v-container>
+      <v-btn
+        dark
+        class="mt-4 rounded-circle"
+        :class="checkInStatus ? 'checkout-gradient' : 'checkin-gradient'"
+        width="200px"
+        height="200px"
+        x-large
+        @click="scannerDialog = true"
+      >
+        <div class="d-flex flex-column">
+          <v-icon x-large>mdi-gesture-tap</v-icon>
+          <span>
+            {{ checkInBtnText }}
+          </span>
+        </div>
+      </v-btn>
+    </div>
     <v-dialog
       v-if="scannerDialog"
       v-model="scannerDialog"
