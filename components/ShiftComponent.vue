@@ -1,105 +1,134 @@
 <template>
   <div>
-    <v-card class="ma-3">
-      <v-container fluid grid-list-lg>
-        <v-layout row wrap>
-          <v-flex xs12>
-            <v-card color="#D9F8C4" class="white--text">
-              <div class="pt-5 pb-5">
-                <v-row justify="center" align="center" no-gutters>
-                  <v-col sm="5" md="6">
-                    <div class="headline pr-5">حضور</div>
-                  </v-col>
-                  <v-col justify="center" align="center" sm="5" md="6">
-                    <big>{{ $props.workDay[0] }}</big>
-                  </v-col>
-                </v-row>
-              </div>
-            </v-card>
-          </v-flex>
-        </v-layout>
-      </v-container>
-    </v-card>
-    <v-card class="ma-3">
-      <v-container fluid grid-list-lg>
-        <v-layout row wrap>
-          <v-flex xs12>
-            <v-card color="#F9F9C5" class="white--text">
-              <div class="pt-5 pb-5">
-                <v-row justify="center" align="center" no-gutters>
-                  <v-col sm="5" md="6" class="pl-8">
-                    <div class="headline pr-5">غیبت</div>
-                  </v-col>
-                  <v-col justify="center" align="center" sm="5" md="6">
-                    <big>{{ $props.workDay[1] }}</big>
-                  </v-col>
-                </v-row>
-              </div>
-            </v-card>
-          </v-flex>
-        </v-layout>
-      </v-container>
-    </v-card>
-    <v-card class="ma-3">
-      <v-container fluid grid-list-lg>
-        <v-layout row wrap>
-          <v-flex xs12>
-            <v-card color="#FAD9A1" class="white--text">
-              <div class="pt-5 pb-5">
-                <v-row justify="center" align="center" no-gutters>
-                  <v-col sm="5" md="6">
-                    <div class="headline pr-5">تاخیر</div>
-                  </v-col>
-                  <v-col justify="center" align="center" sm="5" md="6">
-                    <big>{{ $props.workDay[2] }}</big>
-                  </v-col>
-                </v-row>
-              </div>
-            </v-card>
-          </v-flex>
-        </v-layout>
-      </v-container>
-    </v-card>
-    <v-card class="ma-3">
-      <v-container fluid grid-list-lg>
-        <v-layout row wrap>
-          <v-flex xs12>
-            <v-card color="#F37878" class="white--text">
-              <div class="pt-5 pb-5">
-                <v-row justify="center" align="center" no-gutters>
-                  <v-col sm="5" md="6">
-                    <div class="headline pr-5">اضافه کار</div>
-                  </v-col>
-                  <v-col justify="center" align="center" sm="5" md="6">
-                    <big>{{ $props.workDay[3] }}</big>
-                  </v-col>
-                </v-row>
-              </div>
-            </v-card>
-          </v-flex>
-        </v-layout>
-      </v-container>
-    </v-card>
-    <v-card class="ma-3">
-      <v-container fluid grid-list-lg>
-        <v-layout row wrap>
-          <v-flex xs12>
-            <v-card color="#F37878" class="white--text">
-              <div class="pt-5 pb-5">
-                <v-row justify="center" align="center" no-gutters>
-                  <v-col sm="5" md="6">
-                    <div class="headline pr-5">اضافه کار</div>
-                  </v-col>
-                  <v-col justify="center" align="center" sm="5" md="6">
-                    <big>{{ $props.workDay[4] }}</big>
-                  </v-col>
-                </v-row>
-              </div>
-            </v-card>
-          </v-flex>
-        </v-layout>
-      </v-container>
-    </v-card>
+    <v-container fluid grid-list-lg>
+      <v-layout row wrap>
+        <v-flex xs12>
+          <v-card color="#A685E2" class="white--text">
+            <div class="pt-5 pb-5">
+              <v-col justify="center" align="center">
+                <big class="headline">{{ $props.workDay[0] }}</big>
+              </v-col>
+              <v-row justify="center" align="center" no-gutters>
+                <v-col sm="5" md="6">
+                  <big class="pr-5"
+                    >از {{ $props.start[1] }} : {{ $props.start[0] }}</big
+                  >
+                </v-col>
+                <v-col justify="center" align="center" sm="5" md="6">
+                  <big class="pr-9"
+                    >تا {{ $props.start[1] }} : {{ $props.start[0] }}</big
+                  >
+                </v-col>
+              </v-row>
+            </div>
+          </v-card>
+        </v-flex>
+      </v-layout>
+    </v-container>
+
+    <v-container fluid grid-list-lg>
+      <v-layout row wrap>
+        <v-flex xs12>
+          <v-card color="#A685E2" class="white--text">
+            <div class="pt-5 pb-5">
+              <v-col justify="center" align="center">
+                <big class="headline">{{ $props.workDay[1] }}</big>
+              </v-col>
+              <v-row justify="center" align="center" no-gutters>
+                <v-col sm="5" md="6">
+                  <big class="pr-5"
+                    >از {{ $props.start[1] }} : {{ $props.start[0] }}</big
+                  >
+                </v-col>
+                <v-col justify="center" align="center" sm="5" md="6">
+                  <big class="pr-9"
+                    >تا {{ $props.end[1] }} : {{ $props.end[0] }}</big
+                  >
+                </v-col>
+              </v-row>
+            </div>
+          </v-card>
+        </v-flex>
+      </v-layout>
+    </v-container>
+
+    <v-container fluid grid-list-lg>
+      <v-layout row wrap>
+        <v-flex xs12>
+          <v-card color="#A685E2" class="white--text">
+            <div class="pt-5 pb-5">
+              <v-col justify="center" align="center">
+                <big class="headline">{{ $props.workDay[2] }}</big>
+              </v-col>
+              <v-row justify="center" align="center" no-gutters>
+                <v-col sm="5" md="6">
+                  <big class="pr-5"
+                    >از {{ $props.start[1] }} : {{ $props.start[0] }}</big
+                  >
+                </v-col>
+                <v-col justify="center" align="center" sm="5" md="6">
+                  <big class="pr-9"
+                    >تا {{ $props.end[1] }} : {{ $props.end[0] }}</big
+                  >
+                </v-col>
+              </v-row>
+            </div>
+          </v-card>
+        </v-flex>
+      </v-layout>
+    </v-container>
+
+    <v-container fluid grid-list-lg>
+      <v-layout row wrap>
+        <v-flex xs12>
+          <v-card color="#A685E2" class="white--text">
+            <div class="pt-5 pb-5">
+              <v-col justify="center" align="center">
+                <big class="headline">{{ $props.workDay[3] }}</big>
+              </v-col>
+              <v-row justify="center" align="center" no-gutters>
+                <v-col sm="5" md="6">
+                  <big class="pr-5"
+                    >از {{ $props.start[1] }} : {{ $props.start[0] }}</big
+                  >
+                </v-col>
+                <v-col justify="center" align="center" sm="5" md="6">
+                  <big class="pr-9"
+                    >تا {{ $props.end[1] }} : {{ $props.end[0] }}</big
+                  >
+                </v-col>
+              </v-row>
+            </div>
+          </v-card>
+        </v-flex>
+      </v-layout>
+    </v-container>
+
+    <v-container fluid grid-list-lg>
+      <v-layout row wrap>
+        <v-flex xs12>
+          <v-card color="#A685E2" class="white--text">
+            <div class="pt-5 pb-5">
+              <v-col justify="center" align="center">
+                <big class="headline">{{ $props.workDay[4] }}</big>
+              </v-col>
+              <v-row justify="center" align="center" no-gutters>
+                <v-col sm="5" md="6">
+                  <big class="pr-5"
+                    >از {{ $props.start[1] }} : {{ $props.start[0] }}</big
+                  >
+                </v-col>
+                <v-col justify="center" align="center" sm="5" md="6">
+                  <big class="pr-9"
+                    >تا {{ $props.end[1] }} : {{ $props.end[0] }}</big
+                  >
+                </v-col>
+              </v-row>
+            </div>
+          </v-card>
+        </v-flex>
+      </v-layout>
+    </v-container>
   </div>
 </template>
 <script>
@@ -110,17 +139,33 @@ export default {
       default() {
         return [{ message: 'hello' }]
       },
+      start: {
+        type: String,
+        default: '',
+      },
+      end: {
+        type: String,
+        default: '',
+      },
     },
   },
   data() {
     return {
       workDays: null,
+      startime: null,
+      endtime: null,
     }
   },
 
   async fetch() {
     await this.$axios.get('/employee/mySchedule').then((res) => {
       this.workDays = res.data.response.workDays
+      this.startime = res.data.response.workSchedule.startTime
+      this.endtime = res.data.response.workSchedule.endTime
+
+      this.$props.start = this.startime.split(':', 3)
+      this.$props.end = this.endtime.split(':', 3)
+      console.log(this.$props.start)
 
       for (let i = 0; i < 5; i++) {
         if (this.workDays[i] === 'Sunday') {
@@ -140,8 +185,10 @@ export default {
         }
       }
     })
+
+    // console.log(res.data.response.startTime)
     for (let i = 0; i < 5; i++) {
-      console.log(this.$props.workDay[i])
+      // console.log(this.$props.workDay[i])
     }
     // this.$props.overTimeHours = this.presence.split(':', 3)
   },
