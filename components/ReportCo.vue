@@ -4,7 +4,7 @@
       <v-container fluid grid-list-lg>
         <v-layout row wrap>
           <v-flex xs12>
-            <v-card color="green darken-3 darken-2" class="white--text">
+            <v-card color="#D9F8C4" class="white--text">
               <div class="pt-5 pb-5">
                 <v-row justify="center" align="center" no-gutters>
                   <v-col sm="5" md="6">
@@ -28,7 +28,7 @@
       <v-container fluid grid-list-lg>
         <v-layout row wrap>
           <v-flex xs12>
-            <v-card color="deep-orange darken-4 darken-2" class="white--text">
+            <v-card color="#F9F9C5" class="white--text">
               <div class="pt-5 pb-5">
                 <v-row justify="center" align="center" no-gutters>
                   <v-col sm="5" md="6" class="pl-8">
@@ -52,7 +52,7 @@
       <v-container fluid grid-list-lg>
         <v-layout row wrap>
           <v-flex xs12>
-            <v-card color="orange darken-4 darken-2" class="white--text">
+            <v-card color="#FAD9A1" class="white--text">
               <div class="pt-5 pb-5">
                 <v-row justify="center" align="center" no-gutters>
                   <v-col sm="5" md="6">
@@ -76,7 +76,7 @@
       <v-container fluid grid-list-lg>
         <v-layout row wrap>
           <v-flex xs12>
-            <v-card color="blue darken-3" class="white--text">
+            <v-card color="#F37878" class="white--text">
               <div class="pt-5 pb-5">
                 <v-row justify="center" align="center" no-gutters>
                   <v-col sm="5" md="6">
