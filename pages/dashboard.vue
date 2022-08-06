@@ -1,22 +1,38 @@
 <template>
   <div>
     <v-container>
-      <v-btn
-        dark
-        color="primary"
-        class="mx-auto mt-4 rounded-circle checkin-gradient"
-        width="200px"
-        height="200px"
-        x-large
-        @click="scannerDialog = true"
+      <div
+        v-if="!$fetchState.pending"
+        class="d-flex flex-column justify-center align-center"
+        style="height: 100vh"
       >
-        <div class="d-flex flex-column">
-          <v-icon x-large>mdi-gesture-tap</v-icon>
-          <span>
-            {{ checkInBtnText }}
-          </span>
+        <div class="farsi-digits d-flex flex-column align-center">
+          <div id="clock">
+            {{ String(currentTime.getHours()).padStart(2, '0') }}:{{
+              String(currentTime.getMinutes()).padStart(2, '0')
+            }}
+          </div>
+          <div id="date" class="text-caption">
+            {{ today }}
+          </div>
         </div>
-      </v-btn>
+        <v-btn
+          dark
+          class="mt-4 rounded-circle"
+          :class="checkInStatus ? 'checkout-gradient' : 'checkin-gradient'"
+          width="200px"
+          height="200px"
+          x-large
+          @click="scannerDialog = true"
+        >
+          <div class="d-flex flex-column">
+            <v-icon x-large>mdi-gesture-tap</v-icon>
+            <span>
+              {{ checkInBtnText }}
+            </span>
+          </div>
+        </v-btn>
+      </div>
     </v-container>
     <v-dialog
       v-if="scannerDialog"
@@ -51,11 +67,11 @@
         </qrcode-stream>
       </div>
     </v-dialog>
-    <v-snackbar v-model="snackbar">{{ message }}</v-snackbar>
   </div>
 </template>
 
 <script>
+import moment from 'jalali-moment'
 import { QrcodeStream } from 'vue-qrcode-reader'
 export default {
   components: {
@@ -65,11 +81,11 @@ export default {
   data() {
     return {
       camera: 'auto',
-      snackbar: false,
-      message: null,
       scannerDialog: false,
       checkInStatus: false,
       checkInData: null,
+      currentTime: new Date(),
+      today: '',
     }
   },
 
@@ -81,6 +97,17 @@ export default {
         this.checkInData = res.data.response
       }
     })
+  },
+
+  computed: {
+    checkInBtnText() {
+      return this.checkInStatus ? 'خروج' : 'ورود'
+    },
+  },
+
+  created() {
+    this.calculateTime()
+    setInterval(this.calculateTime, 5000)
   },
 
   methods: {
@@ -103,11 +130,10 @@ export default {
           })
       }
     },
-  },
 
-  computed: {
-    checkInBtnText() {
-      return this.checkInStatus ? 'خروج' : 'حضور'
+    calculateTime() {
+      this.currentTime = new Date()
+      this.today = moment().locale('fa').format('dddd، DD MMMM')
     },
   },
 }
@@ -126,11 +152,20 @@ export default {
 }
 
 .checkin-gradient {
-  background: linear-gradient(
-    45deg,
-    rgba(97, 85, 166, 1) 0%,
-    rgba(9, 9, 121, 1) 60%,
-    rgba(0, 114, 255, 1) 100%
-  );
+  background: linear-gradient(45deg, #efd5ff 0%, #515ada 100%);
+}
+
+.checkout-gradient {
+  background: linear-gradient(45deg, #d53369 0%, #daae51 100%);
+}
+
+#clock {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+#date {
+  opacity: 50%;
+  font-size: 16px;
 }
 </style>
