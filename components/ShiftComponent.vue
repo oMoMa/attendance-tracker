@@ -11,7 +11,7 @@
                     <div class="headline pr-5">حضور</div>
                   </v-col>
                   <v-col justify="center" align="center" sm="5" md="6">
-                    <big>{{ workDay[0] }}</big>
+                    <big>{{ $props.workDay[0] }}</big>
                   </v-col>
                 </v-row>
               </div>
@@ -31,7 +31,7 @@
                     <div class="headline pr-5">غیبت</div>
                   </v-col>
                   <v-col justify="center" align="center" sm="5" md="6">
-                    <big>{{ workDay[1] }}</big>
+                    <big>{{ $props.workDay[1] }}</big>
                   </v-col>
                 </v-row>
               </div>
@@ -51,7 +51,7 @@
                     <div class="headline pr-5">تاخیر</div>
                   </v-col>
                   <v-col justify="center" align="center" sm="5" md="6">
-                    <big>{{ workDay[2] }}</big>
+                    <big>{{ $props.workDay[2] }}</big>
                   </v-col>
                 </v-row>
               </div>
@@ -71,7 +71,7 @@
                     <div class="headline pr-5">اضافه کار</div>
                   </v-col>
                   <v-col justify="center" align="center" sm="5" md="6">
-                    <big>{{ workDay[3] }}</big>
+                    <big>{{ $props.workDay[3] }}</big>
                   </v-col>
                 </v-row>
               </div>
@@ -91,7 +91,7 @@
                     <div class="headline pr-5">اضافه کار</div>
                   </v-col>
                   <v-col justify="center" align="center" sm="5" md="6">
-                    <big>{{ workDay[4] }}</big>
+                    <big>{{ $props.workDay[4] }}</big>
                   </v-col>
                 </v-row>
               </div>
@@ -107,7 +107,6 @@ export default {
   props: {
     workDay: {
       type: Array,
-
       default() {
         return [{ message: 'hello' }]
       },
@@ -141,8 +140,9 @@ export default {
         }
       }
     })
-    //
-    console.log(this.$props.workDay[4])
+    for (let i = 0; i < 5; i++) {
+      console.log(this.$props.workDay[i])
+    }
     // this.$props.overTimeHours = this.presence.split(':', 3)
   },
 }
