@@ -5,5 +5,9 @@
 
 @use 'font-face.css';
 
+.farsi-digits {
+  font-feature-settings: 'ss01';
+}
+
 $body-font-family: Vazirmatn UI, sans-serif !default;
 $btn-letter-spacing: 0 !default;
