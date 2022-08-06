@@ -137,7 +137,7 @@ export default {
     workDay: {
       type: Array,
       default() {
-        return [{ message: 'hello' }]
+        return [{ message: 'No Day' }]
       },
       start: {
         type: String,
