@@ -14,6 +14,10 @@
       <span>آمار حضور</span>
       <v-icon>mdi-chart-bar</v-icon>
     </v-btn>
+    <v-btn icon>
+      <span>مرخصی</span>
+      <v-icon>mdi-exit-run</v-icon>
+    </v-btn>
     <v-btn icon value="profile" nuxt to="/profile">
       <span>حساب کاربری</span>
       <v-icon>mdi-account</v-icon>
