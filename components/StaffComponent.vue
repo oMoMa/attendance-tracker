@@ -7,12 +7,12 @@
           justify="center"
           align="center"
           class="form-control-select mt-5"
+          v-model="selected"
           :items="items"
           label="کارکنان حاضر"
           solo
-          @input="changedLabel"
+          @input="$fetch()"
         ></v-select>
-        <span>{{ selected }}</span>
       </v-col>
     </v-row>
 
@@ -20,20 +20,26 @@
       <v-simple-table class="mt-3">
         <template #default>
           <!-- <thead>
-        <tr>
-          <th class="text-left">Name</th>
-          <th class="text-left">Calories</th>
-        </tr>
-      </thead> -->
+            <tr>
+              <th class="text-center">عکس</th>
+              <th class="text-center">نام</th>
+            </tr>
+          </thead> -->
           <tbody>
             <tr v-for="user in users" :key="user.id">
               <td justify="center" align="center" class="pa-2">
-                <v-avatar class="mr-8">
+                <v-avatar>
                   <img alt="Avatar" :src="require('assets/Images/t.jpg')" />
                 </v-avatar>
               </td>
-              <td justify="center" align="center" class="pa-2">
-                {{ user.name }}
+              <td
+                justify="center"
+                align="center"
+                class="pa-2"
+                align-start
+                text-right
+              >
+                {{ user.fname }} {{ user.lname }}
               </td>
             </tr>
           </tbody>
@@ -62,81 +68,22 @@ export default {
           value: 'name',
         },
       ],
-      users: [
-        {
-          id: 1,
-          name: 'Evan You',
-        },
-        {
-          id: 2,
-          name: 'Jeff Bezos',
-        },
-        {
-          id: 3,
-          name: 'StackOverflow',
-        },
-        {
-          id: 4,
-          name: 'Steve Jobs',
-        },
-        {
-          id: 5,
-          name: 'Youtube',
-        },
-        {
-          id: 1,
-          name: 'Evan You',
-        },
-        {
-          id: 2,
-          name: 'Jeff Bezos',
-        },
-        {
-          id: 3,
-          name: 'StackOverflow',
-        },
-        {
-          id: 4,
-          name: 'Steve Jobs',
-        },
-        {
-          id: 5,
-          name: 'Youtube',
-        },
-        {
-          id: 1,
-          name: 'Evan You',
-        },
-        {
-          id: 2,
-          name: 'Jeff Bezos',
-        },
-        {
-          id: 3,
-          name: 'StackOverflow',
-        },
-        {
-          id: 4,
-          name: 'Steve Jobs',
-        },
-        {
-          id: 5,
-          name: 'Youtube',
-        },
-      ],
+      users: [],
     }
   },
-  methods: {
-    changedLabel(event) {
-      this.selected = event
-
-      if (event === 'همه کارکنان') {
-        console.log(event)
-      }
-      if (event === 'همه کارکنان') {
-        console.log(event)
-      }
-    },
+  async fetch() {
+    if (this.selected === 'همه کارکنان') {
+      await this.$axios.get('/employees').then((res) => {
+        this.users = res.data
+      })
+    }
+    // if (this.selected === 'کارکنان حاضر') {
+    //   await this.$axios
+    //     .get('/employer/workplace/:id/presentEmloyeess')
+    //     .then((res) => {
+    //       this.users = res.data
+    //     })
+    // }
   },
 }
 </script>
