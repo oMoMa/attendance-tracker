@@ -3,15 +3,6 @@
   <div>
     <v-row class="mt-5">
       <v-col sm="12">
-        <!-- <v-row no-gutters>
-          <v-col justify="center" align="center" cols="4" sm="6">
-            <v-btn></v-btn>
-          </v-col>
-          <v-col justify="center" align="center" cols="8" sm="6">
-            <v-btn></v-btn>
-          </v-col>
-        </v-row> -->
-
         <v-select
           justify="center"
           align="center"
