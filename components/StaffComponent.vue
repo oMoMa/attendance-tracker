@@ -15,11 +15,13 @@
         <v-select
           justify="center"
           align="center"
-          class="mt-5"
+          class="form-control-select mt-5"
           :items="items"
           label="کارکنان حاضر"
           solo
+          @input="changedLabel"
         ></v-select>
+        <span>{{ selected }}</span>
       </v-col>
     </v-row>
 
@@ -52,9 +54,16 @@
 
 <script>
 export default {
+  props: {
+    staff: {
+      type: Array,
+      default() {},
+    },
+  },
   data() {
     return {
       items: ['همه کارکنان', 'کارکنان حاضر'],
+      selected: null,
       headers: [
         {
           text: 'users',
@@ -125,6 +134,18 @@ export default {
         },
       ],
     }
+  },
+  methods: {
+    changedLabel(event) {
+      this.selected = event
+
+      if (event === 'همه کارکنان') {
+        console.log(event)
+      }
+      if (event === 'همه کارکنان') {
+        console.log(event)
+      }
+    },
   },
 }
 </script>
