@@ -1,4 +1,5 @@
 import fa from 'vuetify/lib/locale/fa'
+import webpack from 'webpack'
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
@@ -107,10 +108,10 @@ export default {
     theme: {
       themes: {
         light: {
-          primary: '6155A6',
-          secondary: 'A685E2',
-          trietary: 'FFABE1',
-          background: 'FFE6E6',
+          primary: '#6155A6',
+          secondary: '#A685E2',
+          trietary: '#FFABE1',
+          background: '#FFE6E6',
         },
       },
     },
@@ -125,5 +126,7 @@ export default {
   // privateRuntimeConfig: {},
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    plugins: [new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)],
+  },
 }
