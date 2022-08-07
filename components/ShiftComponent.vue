@@ -16,7 +16,7 @@
                 </v-col>
                 <v-col justify="center" align="center" sm="5" md="6">
                   <big class="pr-9"
-                    >تا {{ $props.start[1] }} : {{ $props.start[0] }}</big
+                    >تا {{ $props.end[1] }} : {{ $props.end[0] }}</big
                   >
                 </v-col>
               </v-row>
@@ -165,7 +165,6 @@ export default {
 
       this.$props.start = this.startime.split(':', 3)
       this.$props.end = this.endtime.split(':', 3)
-      console.log(this.$props.start)
 
       for (let i = 0; i < 5; i++) {
         if (this.workDays[i] === 'Sunday') {
@@ -185,12 +184,6 @@ export default {
         }
       }
     })
-
-    // console.log(res.data.response.startTime)
-    for (let i = 0; i < 5; i++) {
-      // console.log(this.$props.workDay[i])
-    }
-    // this.$props.overTimeHours = this.presence.split(':', 3)
   },
 }
 </script>
