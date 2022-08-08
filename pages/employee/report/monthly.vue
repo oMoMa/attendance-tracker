@@ -34,6 +34,8 @@ export default {
     ReportCard,
   },
 
+  layout: 'employeeDefault',
+
   data() {
     return {
       range: '',
