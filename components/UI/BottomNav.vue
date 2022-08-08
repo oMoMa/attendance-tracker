@@ -10,7 +10,7 @@
       <span>خانه</span>
       <v-icon>mdi-home</v-icon>
     </v-btn>
-    <v-btn icon>
+    <v-btn icon value="report" nuxt to="/employee/report">
       <span>آمار حضور</span>
       <v-icon>mdi-chart-bar</v-icon>
     </v-btn>
