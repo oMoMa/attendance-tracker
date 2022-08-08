@@ -6,6 +6,7 @@
         {{ errorMessage }}
       </v-snackbar>
     </v-main>
+    <bottom-nav />
   </v-app>
 </template>
 
