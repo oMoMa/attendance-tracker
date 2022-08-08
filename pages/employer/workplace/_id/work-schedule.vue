@@ -23,6 +23,72 @@
     </v-sheet>
     <v-container class="mt-n16">
       <v-card max-width="400px" width="100%" class="pa-2 rounded-lg mx-auto">
+        <v-dialog max-width="300px">
+          <template #activator="{ on }">
+            <div class="pa-2">
+              <v-btn dark color="blue lighten-2" block v-on="on">افزودن</v-btn>
+            </div>
+          </template>
+          <template #default="dialog">
+            <v-card>
+              <v-card-title> افزودن شیفت </v-card-title>
+              <div class="pa-4">
+                <v-text-field
+                  v-model="newScheduleName"
+                  outlined
+                  label="نام"
+                ></v-text-field>
+                <v-row>
+                  <v-col cols="12">
+                    <v-btn
+                      id="range-btn-from"
+                      color="primary"
+                      block
+                      class="mt-4"
+                    >
+                      از
+                    </v-btn>
+                  </v-col>
+                  <v-col cols="12">
+                    <v-btn id="range-btn-to" color="primary" block class="mt-4">
+                      تا
+                    </v-btn>
+                  </v-col>
+                </v-row>
+
+                <date-time-picker
+                  v-model="startTime"
+                  locale="fa"
+                  type="time"
+                  format="hh:mm:ss"
+                  custom-input="#range-btn-from"
+                  :color="$vuetify.theme.themes.light.primary"
+                  class="farsi-digits"
+                />
+                <date-time-picker
+                  v-model="endTime"
+                  locale="fa"
+                  type="time"
+                  format="hh:mm:ss"
+                  custom-input="#range-btn-to"
+                  :color="$vuetify.theme.themes.light.primary"
+                  class="farsi-digits"
+                />
+              </div>
+              <v-card-actions>
+                <v-btn
+                  class="mx-auto"
+                  @click="
+                    addSchedule()
+                    dialog.value = false
+                  "
+                >
+                  ثبت
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </template>
+        </v-dialog>
         <v-row v-for="item in workSchedules" :key="item.id">
           <v-col cols="12">
             <v-card color="trietary darken-2" class="white--text">
@@ -50,12 +116,17 @@
 </template>
 <script>
 import { mapState } from 'vuex'
-
+import DateTimePicker from 'vue-persian-datetime-picker'
 export default {
+  components: { DateTimePicker },
+
   data() {
     return {
       workSchedules: [],
       workplace: null,
+      newScheduleName: '',
+      startTime: '',
+      endTime: '',
     }
   },
 
@@ -78,5 +149,19 @@ export default {
   },
 
   computed: mapState('workplace', ['workplaces']),
+
+  methods: {
+    async addSchedule() {
+      await this.$axios
+        .post(`/employer/workplace/${this.$route.params.id}/addWorkSchedule`, {
+          startTime: this.startTime,
+          endTime: this.endTime,
+          title: this.newScheduleName,
+        })
+        .then(() => {
+          this.$fetch()
+        })
+    },
+  },
 }
 </script>
