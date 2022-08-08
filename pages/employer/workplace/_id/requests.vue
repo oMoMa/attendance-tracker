@@ -106,7 +106,9 @@ export default {
 
   async fetch() {
     await this.$axios
-      .get(`/employer/workplace/${this.$route.params.id}/leaveRequests`)
+      .get(
+        `/employer/workplace/${this.$route.params.id}/leaveRequests?page=0&size=999`
+      )
       .then((res) => {
         this.requests = res.data.response.leaves
         this.tableTotalItems = res.data.count
