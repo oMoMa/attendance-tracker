@@ -1,12 +1,17 @@
 <template>
   <div>
-    <v-row justify="center">
-      <v-col cols="6">
-        <v-btn max-width="fit-content" id="daily-leave" color="primary" block>
-          انتخاب بازه
-        </v-btn>
-      </v-col>
-    </v-row>
+    <div class="d-flex justify-center mt-8">
+      <v-btn
+        id="daily-leave"
+        max-width="fit-content"
+        color="primary"
+        class="mx-auto"
+      >
+        انتخاب بازه
+      </v-btn>
+    </div>
+
+    <report-card :report="report" />
     <date-picker
       v-model="range"
       locale="fa"
@@ -22,15 +27,22 @@
 
 <script>
 import DatePicker from 'vue-persian-datetime-picker'
+import ReportCard from '../../../components/ReportCard.vue'
 export default {
   components: {
     DatePicker,
+    ReportCard,
   },
 
   data() {
     return {
       range: '',
-      report: [],
+      report: {
+        presence: ['00', '00', '00'],
+        absence: ['00', '00', '00'],
+        delay: ['00', '00', '00'],
+        overTime: ['00', '00', '00'],
+      },
     }
   },
 
@@ -42,7 +54,11 @@ export default {
           endDate: this.range[1],
         })
         .then((res) => {
-          this.report = res.data.response
+          const response = res.data.response
+          Object.keys(response).forEach((key) => {
+            response[key] = response[key].split(':')
+          })
+          this.report = response
         })
     }
   },
