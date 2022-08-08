@@ -12,7 +12,12 @@
 
 <script>
 import { mapState } from 'vuex'
+import BottomNav from '../components/UI/BottomNav.vue'
 export default {
+  components: {
+    BottomNav,
+  },
+
   computed: {
     ...mapState('snackbar', { errorMessage: 'message' }),
 

@@ -6,7 +6,7 @@
     background-color="background"
     grow
   >
-    <v-btn icon value="dashboard" nuxt to="/dashboard">
+    <v-btn icon value="dashboard" nuxt to="/employee/dashboard">
       <span>خانه</span>
       <v-icon>mdi-home</v-icon>
     </v-btn>
@@ -14,11 +14,11 @@
       <span>آمار حضور</span>
       <v-icon>mdi-chart-bar</v-icon>
     </v-btn>
-    <v-btn icon>
+    <v-btn icon value="leave" nuxt to="/employee/leave">
       <span>مرخصی</span>
       <v-icon>mdi-exit-run</v-icon>
     </v-btn>
-    <v-btn icon value="profile" nuxt to="/profile">
+    <v-btn icon value="profile" nuxt to="/employee/profile">
       <span>حساب کاربری</span>
       <v-icon>mdi-account</v-icon>
     </v-btn>
