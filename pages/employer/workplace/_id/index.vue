@@ -73,7 +73,7 @@ export default {
           title: 'شیفت کاری',
           subtitle: 'مشاهده، ویرایش',
           icon: 'mdi-clipboard-text-clock',
-          to: `/shift`,
+          to: `/work-schedule`,
         },
         {
           title: 'مدیریت درخواست مرخصی',
