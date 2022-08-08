@@ -5,7 +5,6 @@
         <h1>اپلیکیشن حضور و غیاب</h1>
         <v-img
           :src="require('assets/Images/21404.png')"
-          lazy-src="https://picsum.photos/id/11/100/60"
           max-width="400"
           max-height="400"
           class="mt-2"
