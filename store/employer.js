@@ -11,9 +11,11 @@ export const mutations = {
 export const getters = {}
 
 export const actions = {
-  async generateNewCode(context) {
-    await this.$axios.post('/employer/workplace/1/updateQRCode').then((res) => {
-      context.commit('setQrCode', res.data.response)
-    })
+  async generateNewCode(context, id) {
+    await this.$axios
+      .post(`/employer/workplace/${id}/updateQRCode`)
+      .then((res) => {
+        context.commit('setQrCode', res.data.response)
+      })
   },
 }

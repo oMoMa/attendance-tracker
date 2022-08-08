@@ -1,5 +1,5 @@
 <template>
-  <v-card width="fit-content" class="mx-auto">
+  <v-card width="fit-content" class="mx-auto rounded-lg">
     <div class="pa-4">
       <qrcode-vue :value="qrCodeString" :size="size" level="L" />
     </div>
@@ -31,7 +31,10 @@ export default {
   },
 
   async fetch() {
-    await this.$store.dispatch('employer/generateNewCode')
+    await this.$store.dispatch(
+      'employer/generateNewCode',
+      this.$route.params.id
+    )
   },
 
   computed: {
