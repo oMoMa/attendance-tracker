@@ -15,19 +15,22 @@
         width="100%"
       >
         <v-container>
-          <div class="text-h6">
+          <div v-if="workplace" class="text-h6">
             {{ workplace.name }}
           </div>
         </v-container>
       </v-sheet>
     </v-sheet>
-    <v-card max-width="400px" class="mt-n10 rounded-lg"> </v-card>
+
+    <qr-code-generator class="mt-n10" />
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
+import QrCodeGenerator from '../../../../components/QrCodeGenerator.vue'
 export default {
+  components: { QrCodeGenerator },
   data() {
     return {
       workplace: null,
