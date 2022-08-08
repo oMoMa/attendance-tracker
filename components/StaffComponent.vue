@@ -1,13 +1,12 @@
-
 <template>
-  <div>
+  <v-container>
     <v-row class="mt-5">
       <v-col sm="12">
         <v-select
+          v-model="selected"
           justify="center"
           align="center"
           class="form-control-select mt-5"
-          v-model="selected"
           :items="items"
           label="کارکنان حاضر"
           solo
@@ -19,26 +18,20 @@
     <v-card>
       <v-simple-table class="mt-3">
         <template #default>
-          <!-- <thead>
+          <thead>
             <tr>
-              <th class="text-center">عکس</th>
-              <th class="text-center">نام</th>
+              <th class="text-right">عکس</th>
+              <th class="text-right">نام</th>
             </tr>
-          </thead> -->
+          </thead>
           <tbody>
             <tr v-for="user in users" :key="user.id">
-              <td justify="center" align="center" class="pa-2">
+              <td justify="center" align="start" class="pa-2">
                 <v-avatar>
                   <img alt="Avatar" :src="require('assets/Images/t.jpg')" />
                 </v-avatar>
               </td>
-              <td
-                justify="center"
-                align="center"
-                class="pa-2"
-                align-start
-                text-right
-              >
+              <td justify="center" align="start" class="pa-2" text-right>
                 {{ user.fname }} {{ user.lname }}
               </td>
             </tr>
@@ -46,7 +39,7 @@
         </template>
       </v-simple-table>
     </v-card>
-  </div>
+  </v-container>
 </template>
 
 <script>
@@ -73,15 +66,17 @@ export default {
   },
   async fetch() {
     if (this.selected === 'همه کارکنان') {
-      await this.$axios.get('/employees').then((res) => {
-        this.users = res.data
-      })
+      await this.$axios
+        .get(`/employer/workplace/${this.$route.params.id}/indexEmployees`)
+        .then((res) => {
+          this.users = res.data.response.employees
+        })
     }
     if (this.selected === 'کارکنان حاضر') {
       await this.$axios
-        .get('/employer/workplace/1/presentEmloyeess')
+        .get(`/employer/workplace/${this.$route.params.id}/presentEmloyees`)
         .then((res) => {
-          this.users = res.data
+          this.users = res.data.response.presentEmployees
         })
     }
   },

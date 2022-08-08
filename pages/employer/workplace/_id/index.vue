@@ -15,8 +15,10 @@
         width="100%"
       >
         <v-container>
-          <div class="text-h6">
-            <v-icon x-large class="ml-4"> mdi-account-circle</v-icon>
+          <div class="text-h6 white--text">
+            <v-icon color="white" x-large class="ml-4">
+              mdi-account-circle
+            </v-icon>
             {{ fullname }}
           </div>
         </v-container>
@@ -71,7 +73,7 @@ export default {
           title: 'شیفت کاری',
           subtitle: 'مشاهده، ویرایش',
           icon: 'mdi-clipboard-text-clock',
-          to: `shift`,
+          to: `/shift`,
         },
         {
           title: 'مدیریت درخواست مرخصی',

@@ -15,7 +15,7 @@
         width="100%"
       >
         <v-container>
-          <div v-if="workplace" class="text-h6">
+          <div v-if="workplace" class="text-h6 white--text">
             {{ workplace.name }}
           </div>
         </v-container>
