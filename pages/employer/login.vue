@@ -16,7 +16,6 @@
           <v-stepper-content step="2">
             <otp-validate @login="login($event)" />
           </v-stepper-content>
-          <v-stepper-content step="3"><LazyStepThree /></v-stepper-content>
         </v-stepper-items>
       </v-stepper>
     </v-card>
@@ -24,11 +23,13 @@
 </template>
 
 <script>
-import PhoneNumberValidate from '../components/login/PhoneNumberValidate.vue'
-import OtpValidate from '../components/login/OtpValidate.vue'
+import PhoneNumberValidate from '../../components/login/PhoneNumberValidate.vue'
+import OtpValidate from '../../components/login/OtpValidate.vue'
 export default {
   components: { PhoneNumberValidate, OtpValidate },
   layout: 'login',
+
+  auth: false,
 
   data() {
     return {
@@ -39,12 +40,16 @@ export default {
 
   methods: {
     login(code) {
-      this.$auth.loginWith('local', {
-        data: {
-          input: this.phone,
-          code,
-        },
-      })
+      this.$auth
+        .loginWith('localEmployer', {
+          data: {
+            input: this.phone,
+            code,
+          },
+        })
+        .then(() => {
+          this.$router.push({ path: '/employer/dashboard' })
+        })
     },
   },
 }
