@@ -1,107 +1,94 @@
 <template>
-  <div>
-    hi
+  <v-container>
+    <v-row>
+      <v-col cols="12" md="4" lg="3">
+        <v-dialog>
+          <template #activator="{ on }">
+            <v-card
+              v-ripple
+              height="150px"
+              color="grey lighten-2"
+              elevation="2"
+              class="d-flex justify-center align-center rounded-xl"
+              v-on="on"
+            >
+              <span>افزودن محیط کاری</span>
+            </v-card>
+          </template>
 
-    <v-btn @click="$auth.logout()">logout</v-btn>
-  </div>
+          <template #default="dialog">
+            <v-card>
+              <v-card-title> نام محیط کاری </v-card-title>
+              <div class="pa-4">
+                <v-text-field
+                  v-model="newWorkplace"
+                  color="trietary"
+                  type="text"
+                  outlined
+                  placeholder="نام"
+                  label="نام"
+                >
+                </v-text-field>
+              </div>
+              <v-card-actions>
+                <v-btn
+                  color="trietary darken-1"
+                  class="mx-auto"
+                  @click="
+                    addWorkplace()
+                    dialog.value = false
+                  "
+                >
+                  افزودن
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </template>
+        </v-dialog>
+      </v-col>
+      <v-col v-for="item in workplaces" :key="item.id" cols="12" md="4" lg="3">
+        <v-card
+          v-ripple
+          height="150px"
+          elevation="2"
+          class="d-flex justify-center align-center rounded-xl"
+          nuxt
+          :to="`/employer/workplace/${item.id}`"
+        >
+          <span class="text-button">{{ item.name }}</span>
+        </v-card>
+      </v-col>
+    </v-row>
+
+    <!-- <v-btn @click="$auth.logout()">logout</v-btn> -->
+  </v-container>
 </template>
 
 <script>
-import moment from 'jalali-moment'
-import { QrcodeStream } from 'vue-qrcode-reader'
+import { mapState } from 'vuex'
 export default {
-  components: {
-    QrcodeStream,
-  },
-
   data() {
     return {
-      camera: 'auto',
-      scannerDialog: false,
-      checkInStatus: false,
-      checkInData: null,
-      currentTime: new Date(),
-      today: '',
+      newWorkplace: null,
     }
   },
 
   async fetch() {
-    await this.$axios.get('employee/checkedInStatus').then((res) => {
-      if (res.data.response == null) this.checkInStatus = false
-      else {
-        this.checkInStatus = true
-        this.checkInData = res.data.response
-      }
-    })
+    await this.$store.dispatch('workplace/fetchWorkplaces')
   },
 
   computed: {
-    checkInBtnText() {
-      return this.checkInStatus ? 'خروج' : 'ورود'
-    },
-  },
-
-  created() {
-    this.calculateTime()
-    setInterval(this.calculateTime, 5000)
+    ...mapState('workplace', ['workplaces']),
   },
 
   methods: {
-    async onDecode(string) {
-      if (this.checkInStatus === false) {
-        await this.$axios
-          .post('/employee/checkIn', { code: string })
-          .then((res) => {
-            this.checkInStatus = true
-            this.checkInData = res.data.response
-            this.scannerDialog = false
-          })
-      } else {
-        await this.$axios
-          .post('/employee/checkOut', { code: string })
-          .then((res) => {
-            this.checkInStatus = false
-            this.checkInData = res.data.response
-            this.scannerDialog = false
-          })
-      }
-    },
-
-    calculateTime() {
-      this.currentTime = new Date()
-      this.today = moment().locale('fa').format('dddd، DD MMMM')
+    async addWorkplace() {
+      await this.$axios
+        .post('/employer/workplace/add', { name: this.newWorkplace })
+        .then(() => {
+          this.$fetch()
+        })
     },
   },
 }
 </script>
-
-<style>
-@media screen and (orientation: landscape) {
-  #scanner-wrapper {
-    aspect-ratio: 16/9;
-  }
-}
-@media screen and (orientation: portrait) {
-  #scanner-wrapper {
-    aspect-ratio: 9/16;
-  }
-}
-
-.checkin-gradient {
-  background: linear-gradient(45deg, #efd5ff 0%, #515ada 100%);
-}
-
-.checkout-gradient {
-  background: linear-gradient(45deg, #d53369 0%, #daae51 100%);
-}
-
-#clock {
-  font-size: 24px;
-  font-weight: 700;
-}
-
-#date {
-  opacity: 50%;
-  font-size: 16px;
-}
-</style>

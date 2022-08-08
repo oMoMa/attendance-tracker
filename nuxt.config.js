@@ -87,7 +87,7 @@ export default {
         endpoints: {
           login: { url: '/employer/login-register', method: 'post' },
           logout: false,
-          user: false,
+          user: { url: '/employer/profile', method: 'get' },
         },
       },
     },
