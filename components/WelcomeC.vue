@@ -1,19 +1,20 @@
 <template>
-  <v-container class="grey lighten-5">
+  <v-container class="white">
     <v-row no-gutters>
       <v-col justify="center" align="center">
-        <h1>Name of App</h1>
+        <h1>اپلیکیشن حضور و غیاب</h1>
         <v-img
-          :src="require('assets/Images/img.jpg')"
+          :src="require('assets/Images/21404.png')"
           lazy-src="https://picsum.photos/id/11/100/60"
           max-width="400"
           max-height="400"
           class="mt-2"
         >
         </v-img>
-        <h2 class="mt-4">Welcome</h2>
+        <h2 class="mt-4"></h2>
         <p class="mt-2">
-          Fast and easy way to record and track attendance of your employees.
+          با نرم افزار حضور و غیاب آنلاین بدون نیاز به هیچ گونه دستگاه و سخت
+          افزاری میتوانید به راحتی تردد و حضور و غیاب پرسنل خود را کنترل کنید
         </p>
         <v-row>
           <v-col cols="12" md="6">
