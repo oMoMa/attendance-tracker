@@ -1,9 +1,9 @@
 <template>
   <div>
-    <v-container fluid grid-list-lg>
-      <v-layout row wrap>
-        <v-flex xs12>
-          <v-card color="#A685E2" class="white--text">
+    <v-container>
+      <v-row>
+        <v-col cols="12">
+          <v-card color="trietary darken-2" class="white--text">
             <div class="pt-5 pb-5">
               <v-col justify="center" align="center">
                 <big class="headline">{{ dict[workDays[4]] }}</big>
@@ -20,14 +20,12 @@
               </v-row>
             </div>
           </v-card>
-        </v-flex>
-      </v-layout>
-    </v-container>
+        </v-col>
+      </v-row>
 
-    <v-container fluid grid-list-lg>
-      <v-layout row wrap>
-        <v-flex xs12>
-          <v-card color="#A685E2" class="white--text">
+      <v-row>
+        <v-col cols="12">
+          <v-card color="trietary darken-2" class="white--text">
             <div class="pt-5 pb-5">
               <v-col justify="center" align="center">
                 <big class="headline">{{ dict[workDays[0]] }}</big>
@@ -44,14 +42,12 @@
               </v-row>
             </div>
           </v-card>
-        </v-flex>
-      </v-layout>
-    </v-container>
+        </v-col>
+      </v-row>
 
-    <v-container fluid grid-list-lg>
-      <v-layout row wrap>
-        <v-flex xs12>
-          <v-card color="#A685E2" class="white--text">
+      <v-row>
+        <v-col cols="12">
+          <v-card color="trietary darken-2" class="white--text">
             <div class="pt-5 pb-5">
               <v-col justify="center" align="center">
                 <big class="headline">{{ dict[workDays[1]] }}</big>
@@ -68,14 +64,12 @@
               </v-row>
             </div>
           </v-card>
-        </v-flex>
-      </v-layout>
-    </v-container>
+        </v-col>
+      </v-row>
 
-    <v-container fluid grid-list-lg>
-      <v-layout row wrap>
-        <v-flex xs12>
-          <v-card color="#A685E2" class="white--text">
+      <v-row>
+        <v-col cols="12">
+          <v-card color="trietary darken-2" class="white--text">
             <div class="pt-5 pb-5">
               <v-col justify="center" align="center">
                 <big class="headline">{{ dict[workDays[2]] }}</big>
@@ -92,14 +86,12 @@
               </v-row>
             </div>
           </v-card>
-        </v-flex>
-      </v-layout>
-    </v-container>
+        </v-col>
+      </v-row>
 
-    <v-container fluid grid-list-lg>
-      <v-layout row wrap>
-        <v-flex xs12>
-          <v-card color="#A685E2" class="white--text">
+      <v-row>
+        <v-col cols="12">
+          <v-card color="trietary darken-2" class="white--text">
             <div class="pt-5 pb-5">
               <v-col justify="center" align="center">
                 <big class="headline">{{ dict[workDays[3]] }}</big>
@@ -116,8 +108,8 @@
               </v-row>
             </div>
           </v-card>
-        </v-flex>
-      </v-layout>
+        </v-col>
+      </v-row>
     </v-container>
   </div>
 </template>
@@ -149,4 +141,3 @@ export default {
   },
 }
 </script>
-

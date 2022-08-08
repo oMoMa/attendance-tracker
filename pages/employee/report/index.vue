@@ -1,41 +1,72 @@
 <template>
-  <div class="d-flex align-center justify-center" style="height: 100%">
-    <v-row justify="center" align="center">
-      <v-col cols="12" md="6">
-        <v-card
-          v-ripple
-          height="200px"
-          max-width="300px"
-          color="primary"
-          class="d-flex align-center justify-center mx-auto rounded-xl"
-          rounded
-          nuxt
-          to="/employee/report/today"
-        >
-          <span class="text-h3 white--text"> امروز </span>
-        </v-card>
-      </v-col>
-      <v-col cols="12" md="6">
-        <v-card
-          v-ripple
-          height="200px"
-          max-width="300px"
-          color="secondary"
-          class="d-flex align-center justify-center mx-auto rounded-xl"
-          nuxt
-          to="/employee/report/monthly"
-        >
-          <span class="text-h3 white--text"> بازه </span>
-        </v-card>
-      </v-col>
-    </v-row>
+  <div v-if="report">
+    <div class="d-flex justify-center mt-8">
+      <v-btn
+        id="daily-leave"
+        max-width="fit-content"
+        color="primary"
+        class="mx-auto"
+      >
+        انتخاب بازه
+      </v-btn>
+    </div>
+
+    <report-card :report="report" />
+    <date-picker
+      v-model="range"
+      locale="fa"
+      format="YYYY-MM-DD"
+      custom-input="#daily-leave"
+      :color="$vuetify.theme.themes.light.primary"
+      range
+      class="farsi-digits"
+      @change="$fetch()"
+    ></date-picker>
   </div>
 </template>
 
 <script>
+import DatePicker from 'vue-persian-datetime-picker'
+import ReportCard from '../../../components/ReportCard.vue'
 export default {
+  components: {
+    DatePicker,
+    ReportCard,
+  },
+
   layout: 'employeeDefault',
+
+  data() {
+    return {
+      range: '',
+      report: null,
+    }
+  },
+
+  async fetch() {
+    if (this.report === null) {
+      await this.$axios.get('/employee/dailyAttendance').then((res) => {
+        const response = res.data.response
+        Object.keys(response).forEach((key) => {
+          response[key] = response[key].split(':')
+        })
+        this.report = response
+      })
+    }
+    if (this.range !== '') {
+      await this.$axios
+        .post('/employee/getAttendanceBydate', {
+          startDate: this.range[0],
+          endDate: this.range[1],
+        })
+        .then((res) => {
+          const response = res.data.response
+          Object.keys(response).forEach((key) => {
+            response[key] = response[key].split(':')
+          })
+          this.report = response
+        })
+    }
+  },
 }
 </script>
-
-<style></style>

@@ -22,8 +22,8 @@
         </v-container>
       </v-sheet>
     </v-sheet>
-    <v-container>
-      <v-card max-width="400px" class="mt-n10 rounded-lg mx-auto">
+    <v-container class="mt-n16">
+      <v-card max-width="400px" class="rounded-lg mx-auto">
         <v-list max-width="400px">
           <v-list-item
             v-for="item in listItems"
