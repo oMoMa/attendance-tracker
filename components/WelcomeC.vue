@@ -1,33 +1,49 @@
 <template>
-  <v-container class="grey lighten-5">
+  <v-container class="white">
     <v-row no-gutters>
       <v-col justify="center" align="center">
-        <h1>Name of App</h1>
+        <h1>اپلیکیشن حضور و غیاب</h1>
         <v-img
-          :src="require('assets/Images/img.jpg')"
+          :src="require('assets/Images/21404.png')"
           lazy-src="https://picsum.photos/id/11/100/60"
           max-width="400"
           max-height="400"
           class="mt-2"
         >
         </v-img>
-        <h2 class="mt-4">Welcome</h2>
+        <h2 class="mt-4"></h2>
         <p class="mt-2">
-          Fast and easy way to record and track attendance of your employees.
+          با نرم افزار حضور و غیاب آنلاین بدون نیاز به هیچ گونه دستگاه و سخت
+          افزاری میتوانید به راحتی تردد و حضور و غیاب پرسنل خود را کنترل کنید
         </p>
-        <div class="buttons">
-          <v-btn
-            dark
-            rounded
-            color="purple"
-            class="pa-5"
-            nuxt
-            to="/login"
-            max-width="200px"
-          >
-            ورود | ثبت‌نام
-          </v-btn>
-        </div>
+        <v-row>
+          <v-col cols="12" md="6">
+            <v-btn
+              dark
+              rounded
+              color="secondary"
+              class="pa-5"
+              nuxt
+              to="/employee/login"
+              max-width="200px"
+            >
+              ورود | ثبت‌نام کارمند
+            </v-btn>
+          </v-col>
+          <v-col cols="12" md="6">
+            <v-btn
+              dark
+              rounded
+              color="primary"
+              class="pa-5"
+              nuxt
+              to="/employer/login"
+              max-width="200px"
+            >
+              ورود | ثبت‌نام کارفرما
+            </v-btn>
+          </v-col>
+        </v-row>
       </v-col>
     </v-row>
   </v-container>
@@ -36,9 +52,6 @@
 export default {}
 </script>
 <style>
-.buttons {
-  margin-top: 30%;
-}
 p {
   font-weight: 3rem;
 }
