@@ -77,13 +77,13 @@ export default {
         this.users = res.data
       })
     }
-    // if (this.selected === 'کارکنان حاضر') {
-    //   await this.$axios
-    //     .get('/employer/workplace/:id/presentEmloyeess')
-    //     .then((res) => {
-    //       this.users = res.data
-    //     })
-    // }
+    if (this.selected === 'کارکنان حاضر') {
+      await this.$axios
+        .get('/employer/workplace/1/presentEmloyeess')
+        .then((res) => {
+          this.users = res.data
+        })
+    }
   },
 }
 </script>
