@@ -72,11 +72,29 @@ export default {
           user: { url: '/employee/profile', method: 'get' },
         },
       },
+      localEmployer: {
+        scheme: 'local',
+        token: {
+          property: 'response.accessToken',
+          global: true,
+          // required: true,
+          // type: 'Bearer'
+        },
+        user: {
+          property: 'response',
+          // autoFetch: true
+        },
+        endpoints: {
+          login: { url: '/employer/login-register', method: 'post' },
+          logout: false,
+          user: false,
+        },
+      },
     },
     redirect: {
-      login: '/login',
-      logout: '/login',
-      home: '/dashboard',
+      login: '/',
+      logout: '/',
+      home: false,
     },
   },
 

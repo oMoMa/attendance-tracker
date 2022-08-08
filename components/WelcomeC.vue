@@ -15,19 +15,34 @@
         <p class="mt-2">
           Fast and easy way to record and track attendance of your employees.
         </p>
-        <div class="buttons">
-          <v-btn
-            dark
-            rounded
-            color="purple"
-            class="pa-5"
-            nuxt
-            to="/login"
-            max-width="200px"
-          >
-            ورود | ثبت‌نام
-          </v-btn>
-        </div>
+        <v-row>
+          <v-col cols="12" md="6">
+            <v-btn
+              dark
+              rounded
+              color="secondary"
+              class="pa-5"
+              nuxt
+              to="/employee/login"
+              max-width="200px"
+            >
+              ورود | ثبت‌نام کارمند
+            </v-btn>
+          </v-col>
+          <v-col cols="12" md="6">
+            <v-btn
+              dark
+              rounded
+              color="primary"
+              class="pa-5"
+              nuxt
+              to="/employer/login"
+              max-width="200px"
+            >
+              ورود | ثبت‌نام کارفرما
+            </v-btn>
+          </v-col>
+        </v-row>
       </v-col>
     </v-row>
   </v-container>
@@ -36,9 +51,6 @@
 export default {}
 </script>
 <style>
-.buttons {
-  margin-top: 30%;
-}
 p {
   font-weight: 3rem;
 }

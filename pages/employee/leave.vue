@@ -47,11 +47,12 @@
 
 <script>
 import moment from 'jalali-moment'
-import DailyLeaveRequestDialog from '../components/dialog/DailyLeaveRequestDialog.vue'
-import HourlyLeaveRequestDialog from '../components/dialog/HourlyLeaveRequestDialog.vue'
+import DailyLeaveRequestDialog from '../../components/dialog/DailyLeaveRequestDialog.vue'
+import HourlyLeaveRequestDialog from '../../components/dialog/HourlyLeaveRequestDialog.vue'
 import dict from '~/assets/dict.js'
 export default {
   components: { DailyLeaveRequestDialog, HourlyLeaveRequestDialog },
+  layout: 'employeeDefault',
   data() {
     return {
       dailyLeaveDialog: false,

@@ -76,6 +76,8 @@ export default {
     QrcodeStream,
   },
 
+  layout: 'employeeDefault',
+
   data() {
     return {
       camera: 'auto',
