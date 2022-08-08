@@ -44,6 +44,11 @@
               <v-list-item-subtitle>{{ item.subtitle }}</v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
+          <div class="pa-2 mt-4">
+            <v-btn outlined block color="red" @click="$auth.logout()">
+              خروج از حساب کاربری
+            </v-btn>
+          </div>
         </v-list>
       </v-card>
     </v-container>

@@ -25,9 +25,7 @@
       </v-sheet>
     </v-sheet>
     <v-container class="mt-n16">
-      <v-card max-width="400px" class="rounded-lg mx-auto">
-        <shift-component />
-      </v-card>
+      <shift-component class="mx-auto" />
     </v-container>
   </div>
 </template>

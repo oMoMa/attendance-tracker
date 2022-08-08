@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <v-card max-width="400px" class="rounded-lg">
+    <v-card-title>{{ name }}</v-card-title>
     <v-container>
       <v-row>
         <v-col cols="12">
@@ -111,7 +112,7 @@
         </v-col>
       </v-row>
     </v-container>
-  </div>
+  </v-card>
 </template>
 <script>
 export default {
@@ -120,6 +121,7 @@ export default {
       workDays: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Saturday'],
       startime: ['09', '00', '00'],
       endtime: ['17', '00', '00'],
+      name: '',
       dict: {
         Sunday: 'یکشنبه',
         Monday: 'دوشنبه',
@@ -137,6 +139,7 @@ export default {
       this.workDays = res.data.response.workDays
       this.startime = res.data.response.workSchedule.startTime.split(':', 3)
       this.endtime = res.data.response.workSchedule.endTime.split(':', 3)
+      this.name = res.data.response.workSchedule.title
     })
   },
 }
